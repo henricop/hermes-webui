@@ -21,4 +21,4 @@ The last row is client selection state, not a backend persistence or provider-in
 - `before-desktop.png` / `after-desktop.png`
 - `before-mobile.png` / `after-mobile.png`
 
-Generated with OpenAI Codex (GPT-6; exact served model ID is not exposed in the session).
+Generated with OpenAI GPT-6.1 Sol (`gpt-6.1-sol`, high reasoning) via Codex.
