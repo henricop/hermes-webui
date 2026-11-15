@@ -6,6 +6,7 @@ The fixture uses the real static Python catalog builder, the production `renderM
 
 Pinned upstream: `651f752092c43523791f40a0c38aa56c8619917a`.
 Prior contributor head: `79a83b3ca910e735825cd531a56b9d00626461ab`.
+Final follow-up head captured: `2dd26792b8dc2f6a400e8ceb6204f843e5a66129`. The final branch merges cleanly into the pinned upstream; the component was regenerated and captured after the routing-identity refinement.
 
 The controlled configuration is the one in the 14 November gate: active `custom:relay`, primary `fixture-primary`, catalog `[fixture-primary, claude-sonnet-4]`, configured fallback `anthropic/claude-sonnet-4` under `custom:relay`.
 
