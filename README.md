@@ -6,7 +6,7 @@ The fixture uses the real static Python catalog builder, the production `renderM
 
 Pinned upstream: `651f752092c43523791f40a0c38aa56c8619917a`.
 Prior contributor head: `79a83b3ca910e735825cd531a56b9d00626461ab`.
-Final follow-up head captured: `2dd26792b8dc2f6a400e8ceb6204f843e5a66129`. The final branch merges cleanly into the pinned upstream; the component was regenerated and captured after the routing-identity refinement.
+Final published follow-up head: `eba957a3d3c9daff621de36c6ff61896042f6b3d`. The captured production renderer is byte-identical to the clean integration tested in the full run; the subsequent change only loads its dependency in the upstream chip-role test harness.
 
 The controlled configuration is the one in the 14 November gate: active `custom:relay`, primary `fixture-primary`, catalog `[fixture-primary, claude-sonnet-4]`, configured fallback `anthropic/claude-sonnet-4` under `custom:relay`.
 
@@ -23,3 +23,5 @@ The last row is client selection state, not a backend persistence or provider-in
 - `before-mobile.png` / `after-mobile.png`
 
 Generated with OpenAI GPT-6.1 Sol (`gpt-6.1-sol`, high reasoning) via Codex.
+
+[Full verification and baseline comparison](VALIDATION.md).
