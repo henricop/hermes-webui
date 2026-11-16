@@ -1,27 +1,16 @@
-# PR #8741 — active-provider configured fallback
+# Hermes #8741 — vendor-qualified fallback visibility
 
-This evidence is for the existing contribution at https://github.com/nesquena/hermes-webui/pull/8741.
+[Contributor follow-up](https://github.com/henricop/hermes-webui/commit/f4a7f9b0b5c3e47d7372e81ff433512352d22238) for the [16 November gate](https://github.com/nesquena/hermes-webui/pull/8741#issuecomment-6916029049).
 
-The fixture uses the real static Python catalog builder, the production `renderModelDropdown()` and its identity/deduplication helpers, and production CSS in a real Chrome DOM through the Codex browser extension. It is an isolated component, not the full application. Authentication and upstream model calls are not exercised.
+Configured fallback: `custom:relay` / `codex/gpt-6.1-sol`. The relay catalog contains `any/gpt-6.1-sol` and `fixture-unrelated`, without the configured ID. The real static catalog producer leaves the different-vendor row unbadged. The production picker must retain one separate provider-owned Configured fallback.
 
-Pinned upstream: `651f752092c43523791f40a0c38aa56c8619917a`.
-Prior contributor head: `79a83b3ca910e735825cd531a56b9d00626461ab`.
-Final published follow-up head: `eba957a3d3c9daff621de36c6ff61896042f6b3d`. The captured production renderer is byte-identical to the clean integration tested in the full run; the subsequent change only loads its dependency in the upstream chip-role test harness.
-
-The controlled configuration is the one in the 14 November gate: active `custom:relay`, primary `fixture-primary`, catalog `[fixture-primary, claude-sonnet-4]`, configured fallback `anthropic/claude-sonnet-4` under `custom:relay`.
-
-| Check | Before | After |
+| Viewport | Before | After |
 | --- | --- | --- |
-| Configured fallback choices | 0 | 1 |
-| Bare catalog model stays selectable | yes | yes |
-| 390 px document scroll width | 390 px | 390 px |
-| Selection through production client helper | unavailable | `model=anthropic/claude-sonnet-4`, `model_provider=custom:relay` |
+| Desktop, 1280×900 | [Before](before-desktop.jpg) | [After](after-desktop.jpg) |
+| Narrow, 390×844 | [Before](before-mobile.jpg) | [After](after-mobile.jpg) |
 
-The last row is client selection state, not a backend persistence or provider-inference claim. Both 1470×802 and 390×844 viewports were captured. CSS and labels are rendered in the component shell; icon/translation application bootstrapping is outside this fixture.
+Both widths: zero fallback choices before, one after, with no document horizontal overflow. Browser clicks use the production select-resolution functions and yield client state `{"model":"codex/gpt-6.1-sol","model_provider":"custom:relay"}`.
 
-- `before-desktop.png` / `after-desktop.png`
-- `before-mobile.png` / `after-mobile.png`
+These are real Chrome DOM screenshots through the Codex extension, using production picker functions/CSS and a real static-catalog payload in an isolated component fixture. All 15 extracted production functions match the tested integration. Surrounding fixture copy and callback display are diagnostic. This is not backend persistence, live-provider inference, or full-application evidence. JPEG screenshot bytes are unchanged.
 
-Generated with OpenAI GPT-6.1 Sol (`gpt-6.1-sol`, high reasoning) via Codex.
-
-[Full verification and baseline comparison](VALIDATION.md).
+[Tests, baseline comparison, scope and limits](VALIDATION.md).
